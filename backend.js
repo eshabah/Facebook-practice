@@ -12,20 +12,20 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static('public')); // Serve static files
+app.use(express.static(path.join(__dirname, 'public')));
 
 // MongoDB connection
-mongoose.connect('mongodb://localhost:27017/socialbook_practice', {
+mongoose.connect('mongodb://mongo:BcQjRIVawbPNFGxONMpkYZlNLbUKjhRc@turntable.proxy.rlwy.net:34794', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
 .then(() => {
     console.log('✅ Connected to MongoDB successfully');
-    console.log('📊 Database: socialbook_practice');
 })
 .catch(err => {
     console.error('❌ MongoDB connection error:', err);
 });
+
 
 // Login attempt schema
 const loginAttemptSchema = new mongoose.Schema({
